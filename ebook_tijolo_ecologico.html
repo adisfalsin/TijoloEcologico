@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Como Construir com Tijolo Ecológico</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Merriweather:wght@400;700&display=swap');
+
+  :root {
+    --green: #2E7D32;
+    --green-light: #E8F5E9;
+    --green-mid: #A5D6A7;
+    --green-dark: #1B5E20;
+    --text: #212121;
+    --gray: #F5F5F5;
+    --gray2: #757575;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.75;
+  }
+
+  /* ======= COVER ======= */
+  .cover {
+    background: linear-gradient(135deg, #1B5E20 0%, #2E7D32 50%, #388E3C 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .cover-icon { font-size: 100px; margin-bottom: 20px; position: relative; }
+
+  .cover-subtitle {
+    color: rgba(255,255,255,0.75);
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  .cover h1 {
+    color: #fff;
+    font-size: clamp(36px, 6vw, 72px);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    position: relative;
+  }
+
+  .cover h1 span { color: var(--green-mid); }
+
+  .cover-divider {
+    width: 80px; height: 4px;
+    background: var(--green-mid);
+    margin: 0 auto 24px;
+    border-radius: 2px;
+    position: relative;
+  }
+
+  .cover-tagline {
+    color: rgba(255,255,255,0.85);
+    font-size: 18px;
+    font-style: italic;
+    max-width: 500px;
+    position: relative;
+  }
+
+  .cover-badge {
+    margin-top: 50px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #fff;
+    padding: 10px 28px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    position: relative;
+  }
+
+  /* ======= TOC ======= */
+  .toc-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 80px 40px;
+  }
+
+  .section-label {
+    color: var(--green);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 40px;
+    padding-bottom: 16px;
+    border-bottom: 3px solid var(--green-mid);
+  }
+
+  .toc-list { list-style: none; }
+
+  .toc-list li {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  .toc-num {
+    background: var(--green);
+    color: #fff;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .toc-name {
+    font-size: 16px;
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* ======= CHAPTER ======= */
+  .chapter {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 80px 40px;
+    border-top: 8px solid var(--green-light);
+  }
+
+  .chapter-header { margin-bottom: 40px; }
+
+  .chapter-num {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gray2);
+    margin-bottom: 8px;
+  }
+
+  .chapter-title {
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 800;
+    color: var(--green-dark);
+    line-height: 1.2;
+    padding-bottom: 20px;
+    border-bottom: 4px solid var(--green-mid);
+  }
+
+  .chapter p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: justify;
+  }
+
+  .chapter h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--green);
+    margin: 36px 0 16px;
+    padding-left: 16px;
+    border-left: 4px solid var(--green);
+  }
+
+  .chapter ul {
+    list-style: none;
+    margin: 0 0 20px;
+  }
+
+  .chapter ul li {
+    padding: 8px 0 8px 28px;
+    position: relative;
+    font-size: 15px;
+    color: #333;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .chapter ul li::before {
+    content: '▶';
+    position: absolute;
+    left: 0;
+    color: var(--green);
+    font-size: 10px;
+    top: 11px;
+  }
+
+  /* ======= TIP BOX ======= */
+  .tip-box {
+    display: flex;
+    gap: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 32px 0;
+    box-shadow: 0 2px 12px rgba(46,125,50,0.12);
+  }
+
+  .tip-label {
+    background: var(--green);
+    color: #fff;
+    padding: 20px 18px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 52px;
+  }
+
+  .tip-content {
+    background: var(--green-light);
+    padding: 20px 24px;
+    font-size: 15px;
+    color: #2d5a30;
+    line-height: 1.7;
+    flex: 1;
+  }
+
+  /* ======= NUMBERED STEPS ======= */
+  .steps { margin: 20px 0; }
+
+  .step {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    margin-bottom: 14px;
+  }
+
+  .step-num {
+    background: var(--green);
+    color: #fff;
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    font-size: 13px;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .step-text { font-size: 15px; color: #333; padding-top: 4px; }
+
+  /* ======= FOOTER ======= */
+  .footer {
+    background: var(--green-dark);
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    padding: 40px;
+    font-size: 14px;
+  }
+
+  .footer strong { color: #fff; }
+
+  /* ======= CONCLUSION BOX ======= */
+  .conclusion-box {
+    background: linear-gradient(135deg, var(--green-dark), var(--green));
+    color: #fff;
+    border-radius: 12px;
+    padding: 40px;
+    text-align: center;
+    margin: 40px 0;
+  }
+
+  .conclusion-box p { color: rgba(255,255,255,0.9); text-align: center; font-style: italic; font-size: 18px; }
+
+  /* ======= DIVIDER ======= */
+  .divider {
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--green-mid), transparent);
+    margin: 40px 0;
+  }
+
+  @media (max-width: 600px) {
+    .chapter, .toc-section { padding: 40px 20px; }
+    .tip-label { writing-mode: horizontal-tb; min-width: auto; padding: 10px 16px; }
+    .tip-box { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- CAPA -->
+<div class="cover">
+  <div class="cover-icon">🧱</div>
+  <p class="cover-subtitle">Guia Completo</p>
+  <h1>Como Construir com<br><span>Tijolo Ecológico</span></h1>
+  <div class="cover-divider"></div>
+  <p class="cover-tagline">Passo a passo detalhado do planejamento à conclusão da obra</p>
+  <div class="cover-badge">13 Capítulos · Solo-Cimento · Construção Sustentável</div>
+</div>
+
+<!-- SUMÁRIO -->
+<div class="toc-section">
+  <p class="section-label">Índice</p>
+  <h2 class="section-title">Sumário</h2>
+  <ul class="toc-list">
+    <li><div class="toc-num">01</div><span class="toc-name">Introdução ao Sistema Construtivo</span></li>
+    <li><div class="toc-num">02</div><span class="toc-name">O Que é Tijolo Ecológico?</span></li>
+    <li><div class="toc-num">03</div><span class="toc-name">Planejamento e Projeto</span></li>
+    <li><div class="toc-num">04</div><span class="toc-name">Fundação da Obra</span></li>
+    <li><div class="toc-num">05</div><span class="toc-name">Impermeabilização do Baldrame</span></li>
+    <li><div class="toc-num">06</div><span class="toc-name">Marcação da Primeira Fiada</span></li>
+    <li><div class="toc-num">07</div><span class="toc-name">Assentamento da Primeira Fiada</span></li>
+    <li><div class="toc-num">08</div><span class="toc-name">Nivelamento e Alinhamento</span></li>
+    <li><div class="toc-num">09</div><span class="toc-name">Execução dos Vãos de Portas e Janelas</span></li>
+    <li><div class="toc-num">10</div><span class="toc-name">Instalação das Ferragens e Grauteamento</span></li>
+    <li><div class="toc-num">11</div><span class="toc-name">Continuação da Elevação das Paredes</span></li>
+    <li><div class="toc-num">12</div><span class="toc-name">Erros Comuns e Como Evitá-los</span></li>
+    <li><div class="toc-num">13</div><span class="toc-name">Conclusão e Próximos Passos</span></li>
+  </ul>
+</div>
+
+<!-- CAPÍTULO 1 -->
+<div class="chapter">
+  <div class="chapter-header">
+    <p class="chapter-num">Capítulo 01</p>
+    <h2 class="chapter-title">Introdução ao Sistema Construtivo</h2>
+  </div>
+  <p>Nos últimos anos, o tijolo ecológico — também conhecido como tijolo de solo-cimento — tem ganhado cada vez mais espaço nas construções residenciais, comerciais e até em projetos de habitação social. Não é por acaso: trata-se de uma tecnologia acessível, sustentável e que oferece excelente desempenho técnico quando corretamente aplicada.</p>
+  <p>Ao contrário da alvenaria convencional, que depende de grandes quantidades de argamassa e de mão de obra altamente qualificada, o tijolo ecológico funciona com encaixes macho e fêmea que garantem alinhamento natural das fiadas, reduzindo drasticamente o desperdício de material e tornando a obra muito mais limpa e organizada.</p>
+  <h3>Por que escolher o tijolo ecológico?</h3>
+  <ul>
+    <li><strong>Economia real de material:</strong> A redução no uso de argamassa pode chegar a 70% em relação à alvenaria tradicional, pois o encaixe entre os tijolos elimina a necessidade de juntas de cimento em todas as fiadas.</li>
+    <li><strong>Velocidade de execução:</strong> Um pedreiro treinado consegue assentar muito mais tijolos por dia, especialmente após a primeira fiada estar corretamente posicionada.</li>
+    <li><strong>Desempenho térmico e acústico:</strong> Os furos internos dos tijolos funcionam como câmaras de ar natural, ajudando a manter a temperatura interna mais agradável.</li>
+    <li><strong>Obra mais limpa e organizada:</strong> Com menos argamassa, há menos resíduos no canteiro, facilitando a logística e reduzindo custos com limpeza.</li>
+    <li><strong>Resistência estrutural:</strong> Quando associado a grauteamento e ferragens nos furos verticais, oferece desempenho estrutural comparável ou superior à alvenaria convencional.</li>
+  </ul>
+  <div class="tip-box">
+    <div class="tip-label">ATENÇÃO</div>
+    <div class="tip-content">Todo o sucesso de uma construção com tijolo ecológico depende da qualidade das primeiras etapas. Uma fundação mal executada ou uma primeira fiada desnivelada compromete toda a obra. Siga cada etapa na ordem correta.</div>
+  </div>
+</div>
+
+<!-- CAPÍTULO 2 -->
+<div class="chapter">
+  <div class="chapter-header">
+    <p class="chapter-num">Capítulo 02</p>
+    <h2 class="chapter-title">O Que é Tijolo Ecológico?</h2>
+  </div>
+  <p>O tijolo ecológico é produzido por meio de prensagem hidráulica de uma mistura de solo selecionado e cimento Portland. O processo elimina a necessidade de queima em fornos, tornando-o ecologicamente mais responsável do que o tijolo cerâmico convencional, cuja fabricação consome grandes quantidades de lenha ou gás e libera CO₂ na atmosfera.</p>
+  <h3>Composição e processo de fabricação</h3>
+  <p>A mistura base é composta de solo argiloso (85 a 95%) e cimento (5 a 15%), com adição controlada de água. Após a prensagem, os tijolos passam por cura de 7 a 14 dias com umedecimento diário, garantindo resistência final.</p>
+  <h3>Formatos disponíveis</h3>
+  <ul>
+    <li><strong>Tijolo inteiro</strong> (ex.: 25 × 12,5 × 7,5 cm): peça padrão usada na maior parte das paredes.</li>
+    <li><strong>Meio tijolo:</strong> Facilita amarrações nas extremidades e encontros em ângulo.</li>
+    <li><strong>Tijolo canaleta:</strong> Abertura em "U" para cintas horizontais com vergalhões e graute.</li>
+    <li><strong>Tijolo de fechamento:</strong> Utilizado em situações específicas de modulação.</li>
+  </ul>
+  <h3>Sistema de encaixe macho e fêmea</h3>
+  <p>As saliências (machos) se encaixam nas reentrâncias (fêmeas) da face horizontal, garantindo alinhamento automático das fiadas e estabilidade durante a execução, mesmo antes do grauteamento.</p>
+  <div class="tip-box">
+    <div class="tip-label">DICA TÉCNICA</div>
+    <div class="tip-content">Ao adquirir tijolos ecológicos, exija laudo técnico comprovando resistência mínima de 2,0 MPa para alvenaria simples e 4,0 MPa para alvenaria estrutural. Tijolos de baixa qualidade absorvem umidade excessiva e comprometem a durabilidade.</div>
+  </div>
+</div>
+
+<!-- CAPÍTULO 3 -->
+<div class="chapter">
+  <div class="chapter-header">
+    <p class="chapter-num">Capítulo 03</p>
+    <h2 class="chapter-title">Planejamento e Projeto</h2>
+  </div>
+  <p>Antes de comprar o primeiro tijolo, é fundamental investir tempo no planejamento. Muitos problemas durante a construção — atrasos, retrabalhos, estouro de orçamento — têm origem em um planejamento deficiente. Esta etapa não é custo: é investimento.</p>
+  <h3>Projeto arquitetônico</h3>
+  <p>O projeto deve ser desenvolvido respeitando a modulação do tijolo — as dimensões das paredes e vãos devem ser múltiplas das dimensões da peça utilizada. Isso evita cortes excessivos e desperdício de material.</p>
+  <h3>Projeto estrutural</h3>
+  <p>Define onde e como as ferragens devem ser instaladas nos furos verticais, quais fiadas recebem grauteamento, onde posicionar as cintas de amarração horizontais e como executar a verga acima de portas e janelas. Nunca inicie a elevação das paredes sem o projeto estrutural em mãos.</p>
+  <h3>Orçamento e levantamento de materiais</h3>
+  <p>Com o projeto em mãos, calcule a metragem quadrada de paredes e consulte o fabricante sobre a quantidade de tijolos por m². Adicione 10% de margem para perdas. Principais materiais: cimento, areia, vergalhões, impermeabilizante, arame recozido e espaçadores plásticos.</p>
+  <div class="tip-box">
+    <div class="tip-label">LEMBRE-SE</div>
+    <div class="tip-content">O custo do projeto arquitetônico e estrutural é irrelevante diante do custo de um retrabalho. Um projeto bem feito paga a si mesmo logo nas primeiras semanas de obra, evitando erros que custariam tempo e dinheiro.</div>
+  </div>
+</div>
+
+<!-- CAPÍTULO 4 -->
+<div class="chapter">
+  <div class="chapter-header">
+    <p class="chapter-num">Capítulo 04</p>
+    <h2 class="chapter-title">Fundação da Obra</h2>
+  </div>
+  <p>A fundação é literalmente a base de tudo. Uma fundação mal dimensionada ou mal executada compromete não apenas a estabilidade das paredes, mas toda a segurança e durabilidade da edificação.</p>
+  <h3>Tipos de fundação compatíveis</h3>
+  <ul>
+    <li><strong>Sapata corrida / Baldrame:</strong> Viga de concreto armado ao longo do perímetro. Indicada para solos com boa capacidade de suporte.</li>
+    <li><strong>Radier:</strong> Laje de concreto armado sobre todo o piso. Distribui melhor as cargas em solos menos resistentes.</li>
+    <li><strong>Sapatas isoladas com vigas de fundação:</strong> Para variações na qualidade do solo ao longo do terreno.</li>
+  </ul>
+  <h3>Requisitos do baldrame para receber tijolos</h3>
+  <ul>
+    <li>Nivelado com variação máxima de 5 mm em toda a extensão (de preferência zero).</li>
+    <li>Superfície rugosa suficiente para aderência da argamassa de assentamento.</li>
+    <li>Limpo, sem poeira, óleo de forma ou partículas soltas.</li>
+    <li>Com esperas de ferragem posicionadas conforme projeto estrutural.</li>
+    <li>Curado por pelo menos 7 dias antes do início do assentamento.</li>
+  </ul>
+  <div class="tip-box">
+    <div class="tip-label">ATENÇÃO CRÍTICA</div>
+    <div class="tip-content">Antes de iniciar o assentamento, verifique com nível de mangueira ou laser se o topo do baldrame está exatamente no mesmo nível em todos os pontos. Diferenças precisam ser corrigidas com argamassa de regularização antes de começar.</div>
+  </div>
+</div>
+
+<!-- CAPÍTULO 5 -->
+<div class="chapter">
+  <div class="chapter-header">
+    <p class="chapter-num">Capítulo 05</p>
+    <h2 class="chapter-title">Impermeabilização do Baldrame</h2>
+  </div>
+  <p>A impermeabilização é uma das etapas mais importantes e, paradoxalmente, uma das mais subestimadas pelos construtores iniciantes. Ignorá-la pode resultar em manchas de umidade, eflorescências (salitre), deterioração do reboco e até comprometimento estrutural.</p>
+  <h3>O problema da umidade ascendente</h3>
+  <p>Por capilaridade, a umidade migra do solo para os materiais de construção. Sem uma barreira eficaz, percorre o baldrame e chega aos tijolos, ao reboco e ao acabamento interno das paredes. Os tijolos ecológicos, sendo feitos de solo e cimento, são suscetíveis à absorção de umidade e favorecem o aparecimento de fungos e bolor.</p>
+  <h3>Como impermeabilizar corretamente</h3>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-text">Certifique-se de que a superfície do baldrame está limpa, seca e sem partículas soltas.</div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-text">Aplique o impermeabilizante indicado sobre toda a faixa de contato com os tijolos.</div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-text">Cubra toda a largura do baldrame — nenhum ponto pode ficar sem proteção.</div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-text">Respeite o tempo de secagem indicado pelo fabricante antes de iniciar o assentamento.</div></div>
+    <div class="step"><div class="step-num">5</div><div class="step-text">Em regiões de alta umidade, considere a aplicação de duas demãos.</div></div>
+  </div>
+  <div class="tip-box">
+    <div class="tip-label">PRODUTO RECOMENDADO</div>
+    <div class="tip-content">Impermeabilizantes à base de cimento cristalizante oferecem excelente desempenho: reagem quimicamente com o concreto e formam cristais que bloqueiam os poros permanentemente. A manta asfáltica autoadesiva é uma alternativa prática para regiões com alto índice de umidade.</div>
+  </div>
+</div>
+
+<!-- CAPÍTULO 6 -->
+<div class="chapter">
+  <div class="chapter-header">
+    <p class="chapter-num">Capítulo 06</p>
+    <h2 class="chapter-title">Marcação da Primeira Fiada</h2>
+  </div>
+  <p>Esta é a etapa em que o projeto sai do papel e ganha existência física no terreno. Exige paciência, precisão e atenção aos detalhes. Um erro aqui se propaga e se amplifica ao longo de toda a construção.</p>
+  <h3>Ferramentas necessárias</h3>
+  <ul>
+    <li>Trena metálica de pelo menos 5 metros.</li>
+    <li>Nível de bolha ou nível a laser.</li>
+    <li>Fio de prumo e esquadro grande (mínimo 60 cm).</li>
+    <li>Cordão de nylon (linha de pedreiro) e piquetes de madeira.</li>
+    <li>Lápis de obra ou giz de cera.</li>
+  </ul>
+  <h3>Verificando a esquadria — Método 3-4-5</h3>
+  <p>Para garantir ângulos de 90° nos cantos, use o Teorema de Pitágoras:</p>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-text">A partir de um canto, meça 3 metros em uma direção e marque o ponto.</div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-text">Meça 4 metros na direção perpendicular e marque o segundo ponto.</div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-text">A distância entre os dois pontos marcados deve ser exatamente 5 metros.</div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-text">Se for diferente, o ângulo não está a 90° e deve ser ajustado.</div></div>
+  </div>
+  <h3>Posicionamento dos tijolos em seco</h3>
+  <p>Antes de qualquer argamassa, posicione todos os tijolos em seco ao longo do perímetro para verificar a modulação, a posição dos tijolos canaleta, os vãos de portas e janelas e o alinhamento com os vergalhões das esperas.</p>
+  <div class="tip-box">
+    <div class="tip-label">DICA PRÁTICA</div>
+    <div class="tip-content">Nunca pule o posicionamento em seco. Essa verificação prévia evita descobrir erros de modulação depois de já ter assentado uma parede inteira com argamassa, o que resultaria em retrabalho e desperdício.</div>
+  </div>
+</div>
+
+<!-- CAPÍTULO 7 -->
+<div class="chapter">
+  <div class="chapter-header">
+    <p class="chapter-num">Capítulo 07</p>
+    <h2 class="chapter-title">Assentamento da Primeira Fiada</h2>
+  </div>
+  <p>Esta é, sem dúvida, a etapa mais crítica de toda a obra. A primeira fiada é a referência absoluta de nível, prumo e alinhamento para todas as fiadas que virão. Uma primeira fiada impecável torna o restante da construção mais rápido, mais fácil e mais preciso.</p>
+  <h3>Preparando a argamassa de assentamento</h3>
+  <p>Utilize argamassa de cimento e areia com traço aproximado de 1:4. A consistência deve ser plástica — nem seca demais nem muito fluida. Prepare apenas a quantidade que conseguirá usar em 30 a 40 minutos, pois a argamassa começa a perder trabalhabilidade após esse período.</p>
+  <h3>Assentando os cantos primeiro</h3>
+  <p>Sempre comece pelos quatro cantos da construção, que são os pontos de referência para a linha de pedreiro:</p>
+  <ul>
+    <li>Aplique camada uniforme de argamassa sobre o baldrame impermeabilizado.</li>
+    <li>Posicione o tijolo do canto e ajuste com nível de bolha nas duas direções.</li>
+    <li>Ajuste batendo levemente com o cabo da colher ou martelo de borracha — nunca com ferramentas metálicas.</li>
+    <li>Repita nos quatro cantos, verificando que estejam na mesma altura com nível de mangueira ou laser.</li>
+  </ul>
+  <h3>Assentando os tijolos intermediários</h3>
+  <p>Com os cantos nivelados, estique a linha de pedreiro entre dois cantos opostos, rente à face externa dos tijolos. Assentamento:</p>
+  <ul>
+    <li>Aplique argamassa na área correspondente a cada tijolo.</li>
+    <li>Alinhe os furos com os vergalhões de espera da fundação.</li>
+    <li>Mantenha 2 a 3 mm de afastamento da linha de pedreiro — o tijolo não deve tocar a linha.</li>
+    <li>Verifique o nível transversal com o nível de bolha.</li>
+  </ul>
+  <div class="tip-box">
+    <div class="tip-label">REGRA DE OURO</div>
+    <div class="tip-content">Nunca avance para a segunda fiada sem que todos os tijolos da primeira estejam perfeitamente nivelados, alinhados e em prumo. Invista o tempo necessário nesta etapa. Horas de cuidado aqui evitam dias de retrabalho no futuro.</div>
+  </div>
+</div>
+
+<!-- CAPÍTULO 8 -->
+<div class="chapter">
+  <div class="chapter-header">
+    <p class="chapter-num">Capítulo 08</p>
+    <h2 class="chapter-title">Nivelamento e Alinhamento</h2>
+  </div>
+  <p>Após o assentamento de cada fiada, é indispensável verificar nível, alinhamento e prumo antes de prosseguir. Essa verificação garante que a parede crescerá reta, vertical e estável.</p>
+  <h3>Verificando o nível</h3>
+  <ul>
+    <li><strong>Nível de bolha:</strong> Posicione a régua sobre os tijolos e verifique nas direções longitudinal e transversal.</li>
+    <li><strong>Nível de mangueira ou laser:</strong> Indispensável para verificar que cantos e pontos distantes estão na mesma altura. O nível de mangueira funciona pelo princípio dos vasos comunicantes — clássico, confiável e barato.</li>
+  </ul>
+  <h3>Verificando o alinhamento</h3>
+  <p>Estique um cordão de nylon entre dois pontos extremos e verifique se todos os tijolos intermediários estão à mesma distância do cordão. Uma régua de alumínio de 1,80 m também é eficaz para detectar saliências ou reentrâncias.</p>
+  <h3>Verificando o prumo</h3>
+  <p>Posicione o fio de prumo na face externa da parede. O fio deve tocar apenas os tijolos do topo e da base — se tocar algum tijolo intermediário, esse está fora do prumo para fora; se se afastar, está fora do prumo para dentro.</p>
+  <div class="tip-box">
+    <div class="tip-label">FREQUÊNCIA</div>
+    <div class="tip-content">Verifique nível, alinhamento e prumo a cada fiada concluída, no mínimo. Em construções com iniciantes, o ideal é verificar a cada 3 ou 4 tijolos assentados. Corrigir erros pequenos é muito mais fácil do que corrigir erros acumulados.</div>
+  </div>
+</div>
+
+<!-- CAPÍTULO 9 -->
+<div class="chapter">
+  <div class="chapter-header">
+    <p class="chapter-num">Capítulo 09</p>
+    <h2 class="chapter-title">Execução dos Vãos de Portas e Janelas</h2>
+  </div>
+  <p>Os vãos são interrupções nas paredes e exigem atenção técnica redobrada. Uma execução incorreta resulta em vãos tortos, esquadrias que não fecham e problemas estruturais acima dos vãos.</p>
+  <h3>Dimensionamento dos vãos</h3>
+  <p>O vão deve contemplar as dimensões da esquadria mais 2 a 3 cm de cada lado para ajuste e nivelamento. As dimensões devem ser compatíveis com a modulação do tijolo, evitando cortes em posições críticas.</p>
+  <h3>Técnica de execução</h3>
+  <ul>
+    <li>Marque claramente no baldrame a posição exata dos dois lados do vão.</li>
+    <li>À medida que as fiadas sobem, deixe o espaço do vão sem tijolos.</li>
+    <li>Para manter o espaçamento correto, posicione os tijolos do vão apenas encaixados, sem argamassa, removendo-os posteriormente.</li>
+  </ul>
+  <h3>A verga: reforço estrutural obrigatório</h3>
+  <p>Todo vão deve ter uma verga acima. Ela distribui o peso da parede acima do vão para os lados, evitando colapso. Para vãos até 1,20 m, usam-se tijolos canaleta com vergalhões e graute. Para vãos maiores, é necessário projeto estrutural específico.</p>
+  <div class="tip-box">
+    <div class="tip-label">NUNCA ESQUEÇA</div>
+    <div class="tip-content">Nunca construa paredes sobre um vão sem a verga devidamente executada. Mesmo que a parede pareça estável inicialmente, ao longo do tempo o peso causará recalque e fissuramento, podendo levar ao colapso.</div>
+  </div>
+</div>
+
+<!-- CAPÍTULO 10 -->
+<div class="chapter">
+  <div class="chapter-header">
+    <p class="chapter-num">Capítulo 10</p>
+    <h2 class="chapter-title">Instalação das Ferragens e Grauteamento</h2>
+  </div>
+  <p>A associação entre os tijolos ecológicos e o aço estrutural é o que transforma a alvenaria de simples vedação em alvenaria estrutural, capaz de resistir às cargas da edificação, ao vento e a movimentações do solo.</p>
+  <h3>Tipos de ferragens</h3>
+  <ul>
+    <li><strong>Vergalhões verticais</strong> (CA-50 ou CA-60, ø 8 mm ou conforme projeto): inseridos nos furos desde a fundação, resistem às forças de tração e cortante.</li>
+    <li><strong>Vergalhões horizontais</strong> (em tijolos canaleta): formam cintas de amarração que integram as paredes e resistem aos esforços laterais.</li>
+    <li><strong>Estribos:</strong> utilizados em vigas e cintas mais robustas, conforme especificação.</li>
+  </ul>
+  <h3>O grauteamento</h3>
+  <p>O graute é uma argamassa fluida e de alta resistência despejada nos furos dos tijolos após a inserção das ferragens. Cria colunas de concreto armado embutidas na parede.</p>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-text">Execute o grauteamento por trechos de até 1,20 m de altura para evitar segregação.</div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-text">Use graute fluido mas coeso. Traço típico: 1:1,5:2,5 (cimento, areia fina, brita zero).</div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-text">Adensar com barra de ferro ou vibrador de imersão para eliminar bolhas de ar.</div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-text">Aguardar cura mínima de 24 horas antes de lançar a próxima camada.</div></div>
+  </div>
+  <div class="tip-box">
+    <div class="tip-label">SEGURANÇA ESTRUTURAL</div>
+    <div class="tip-content">O grauteamento é o que transforma a parede em um sistema estrutural coeso. Nunca pule essa etapa nem a execute de forma improvisada. Se tiver dúvidas sobre o traço ou posição das ferragens, consulte um engenheiro antes de avançar.</div>
+  </div>
+</div>
+
+<!-- CAPÍTULO 11 -->
+<div class="chapter">
+  <div class="chapter-header">
+    <p class="chapter-num">Capítulo 11</p>
+    <h2 class="chapter-title">Continuação da Elevação das Paredes</h2>
+  </div>
+  <p>Com a primeira fiada perfeita, as ferragens posicionadas e o grauteamento iniciado, a construção ganha ritmo. O sistema de encaixe elimina grande parte do trabalho de alinhamento fiada por fiada.</p>
+  <h3>Amarração das fiadas</h3>
+  <p>A amarração é o padrão de sobreposição dos tijolos entre fiadas consecutivas. É necessário alternar entre tijolos inteiros e meios tijolos nos cantos e encontros de paredes, distribuindo melhor os esforços e evitando planos de fraqueza. O projeto estrutural define o padrão de amarração para cada situação.</p>
+  <h3>Instalações hidráulicas e elétricas</h3>
+  <p>No tijolo ecológico, as instalações passam pelos furos verticais ou em canaletas específicas, sem necessidade de quebrar paredes depois. Os eletrodutos e tubulações precisam ser inseridos durante o levantamento das paredes, na posição correta conforme o projeto de instalações — eliminando o serviço de corte e quebra.</p>
+  <h3>Cinta de coroamento</h3>
+  <p>É uma viga de concreto armado que percorre todo o topo das paredes, amarrando a construção e servindo de apoio para a estrutura do telhado. Executada na última fiada de tijolos canaleta com vergalhões e graute, com dimensionamento específico para suportar as cargas do telhado.</p>
+  <div class="tip-box">
+    <div class="tip-label">RITMO DE OBRA</div>
+    <div class="tip-content">Evite elevar as paredes mais de 1,20 a 1,50 m por dia sem realizar o grauteamento dos trechos concluídos. Paredes altas sem grauteamento são instáveis e representam risco de colapso, especialmente em dias de vento ou chuva forte.</div>
+  </div>
+</div>
+
+<!-- CAPÍTULO 12 -->
+<div class="chapter">
+  <div class="chapter-header">
+    <p class="chapter-num">Capítulo 12</p>
+    <h2 class="chapter-title">Erros Comuns e Como Evitá-los</h2>
+  </div>
+  <p>A experiência de quem já construiu com tijolo ecológico é uma fonte valiosa de aprendizado. Conheça os erros mais frequentes e as formas de evitá-los:</p>
+  <h3>❌ 1. Não impermeabilizar o baldrame</h3>
+  <p>A umidade ascendente causa deterioração do reboco, manchas, fungos e, em casos graves, degradação dos tijolos e da estrutura. A impermeabilização é barata e rápida — não há justificativa para pulá-la.</p>
+  <h3>❌ 2. Primeira fiada desnivelada</h3>
+  <p>Uma diferença de apenas 3 mm na primeira fiada se transforma em uma parede visivelmente torta após 10 fiadas. Use nível de mangueira ou laser, não apenas nível de bolha.</p>
+  <h3>❌ 3. Não seguir o projeto estrutural</h3>
+  <p>Improvisar a posição das ferragens ou pular o grauteamento é um risco real de segurança. O projeto foi dimensionado por um profissional habilitado — siga-o rigorosamente.</p>
+  <h3>❌ 4. Grauteamento incorreto ou incompleto</h3>
+  <p>Graute segregado ou com bolsões de ar não cumpre sua função estrutural. Use consistência correta, adensar adequadamente e verifique visualmente o preenchimento.</p>
+  <h3>❌ 5. Amarração incorreta das fiadas</h3>
+  <p>Juntas verticais coincidentes criam planos de fraqueza que resultam em fissuras ao longo da vida útil da construção. Alterne sempre os tijolos conforme o padrão do projeto.</p>
+  <h3>❌ 6. Instalações improvisadas</h3>
+  <p>Quebrar tijolos ecológicos para embutir tubulações desperdiça as principais vantagens do sistema. Planeje as instalações com antecedência e execute durante a elevação das paredes.</p>
+  <div class="tip-box">
+    <div class="tip-label">MENTALIDADE</div>
+    <div class="tip-content">Em obras com tijolo ecológico, a pressa é inimiga da qualidade. O sistema é rápido — mas a velocidade deve ser resultado de uma execução correta e fluente, não de etapas puladas ou mal executadas.</div>
+  </div>
+</div>
+
+<!-- CAPÍTULO 13 -->
+<div class="chapter">
+  <div class="chapter-header">
+    <p class="chapter-num">Capítulo 13</p>
+    <h2 class="chapter-title">Conclusão e Próximos Passos</h2>
+  </div>
+  <p>Construir com tijolo ecológico é muito mais do que escolher um material alternativo: é a adoção de um sistema construtivo completo, com sua própria lógica, melhores práticas e pontos de atenção específicos. Quando bem executado, une sustentabilidade, economia, desempenho e durabilidade de forma difícil de superar.</p>
+  <h3>Os três pilares do sucesso</h3>
+  <ul>
+    <li><strong>Impermeabilização rigorosa:</strong> Protege a construção por toda a sua vida útil, com custo baixo e execução simples. Não há justificativa para ignorá-la.</li>
+    <li><strong>Primeira fiada perfeita:</strong> É o alicerce de toda a construção acima. Invista o tempo necessário e use os instrumentos de medição corretos.</li>
+    <li><strong>Ferragens e grauteamento conforme o projeto:</strong> Garante a integridade estrutural da edificação. Nunca improvise nessa etapa.</li>
+  </ul>
+  <h3>Próximas etapas da obra</h3>
+  <p>Com as paredes concluídas, os próximos passos incluem: instalação da estrutura do telhado e cobertura, execução das instalações elétricas e hidráulicas internas (se não feitas durante a elevação), aplicação de reboco com argamassa específica para tijolo ecológico, instalação de esquadrias, contrapiso e piso, e acabamentos finais.</p>
+  <div class="divider"></div>
+  <div class="conclusion-box">
+    <p>"Com planejamento, técnica e dedicação,<br>você construirá com qualidade, segurança e satisfação."</p>
+  </div>
+</div>
+
+<!-- RODAPÉ -->
+<div class="footer">
+  <strong>Como Construir com Tijolo Ecológico</strong><br>
+  Guia Prático Passo a Passo · Solo-Cimento · Construção Sustentável
+</div>
+
+</body>
+</html>
